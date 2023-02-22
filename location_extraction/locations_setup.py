@@ -1,7 +1,7 @@
 import pandas as pd
 
 LOCATIONS = {
-    "ua": pd.read_csv('files/locations/ua-locations.csv'),
+    "ua": pd.read_csv('files/locations/ua-locations-decom.csv'),
     "ru": pd.read_csv('files/locations/ru-locations.csv'),
     "by": pd.read_csv('files/locations/by-locations.csv')
 }
