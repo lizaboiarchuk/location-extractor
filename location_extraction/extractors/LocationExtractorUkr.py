@@ -1,10 +1,10 @@
-from location_extraction.LocationExtractor import LocationExtractor
+from location_extraction.extractors.LocationExtractor import LocationExtractor
 import pymorphy2
 
 
 class LocationExtractorUkr(LocationExtractor):
-    def __init__(self, treshold):
-        super().__init__('ukr', treshold)
+    def __init__(self, treshold, countries):
+        super().__init__('ukr', treshold, countries)
         self.moph_analyzer = pymorphy2.MorphAnalyzer(lang='uk')
 
     def _lemmatize(self, entities, text):

@@ -1,17 +1,13 @@
-import pandas as pd
 import stanza
-
-
-LOCATIONS = pd.read_csv('./files/location/ukraine-locations-v3.csv')
 
 MODELS = {
     'ukr': stanza.Pipeline(lang='uk', processors='tokenize,ner,lemma'),
     'ru': stanza.Pipeline(lang='ru', processors='tokenize,ner,lemma')
 }
 
-LOCATION_COL = {
-    'ukr': 'location_uk',
-    'ru': 'russian_new'
+LOCATION_NAME_COLUMNS = {
+    "ukr": "location_name_ukr",
+    "ru": "location_name_ru"
 }
 
 ABBREVIATIONS = {
@@ -24,10 +20,6 @@ UNNECESSARY_LOCS = {
     'ru': ['район', 'ул.', 'улица', 'пер.', 'ул ', 'площадь', 'р-н', ' ул']
 }
 
-REGIONS = {
-    'ukr': pd.read_csv('files/location/region_names_ukr.csv'),
-    'ru': pd.read_csv('files/location/region_names_ru.csv')
-}
 
 CUSTOM_LEMMATIZER = {
     'ukr': {

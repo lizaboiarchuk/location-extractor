@@ -1,10 +1,10 @@
-from location_extraction.LocationExtractor import LocationExtractor
+from location_extraction.extractors.LocationExtractor import LocationExtractor
 from natasha import Segmenter, MorphVocab, NewsEmbedding, NewsMorphTagger, Doc
 
 
 class LocationExtractorRu(LocationExtractor):
-    def __init__(self, treshold):
-        super().__init__('ru', treshold)
+    def __init__(self, treshold, countries):
+        super().__init__('ru', treshold, countries)
         self.segmenter = Segmenter()
         self.morph_vocab = MorphVocab()
         self.embed = NewsEmbedding()
