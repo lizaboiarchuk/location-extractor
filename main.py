@@ -5,6 +5,13 @@ import langdetect
 ukr_extractor = LocationExtractorUkr(treshold=95, countries=['ua', 'ru', 'by'])
 ru_extractor = LocationExtractorRu(treshold=95, countries=['ua', 'ru', 'by'])
 
+def handle_decommunization(locs):
+    for i in range(len(locs)):
+        country, ind = locs[i]
+        if str(ind) in locations_setup.DECOMMUNIZATION_DICT[country].keys():
+            locs[i] = (country, int(locations_setup.DECOMMUNIZATION_DICT[country][str(ind)]))
+    return locs
+
 def get_locations(text):
     lang = langdetect.detect(text)
     if lang == 'uk':
@@ -13,6 +20,7 @@ def get_locations(text):
         locs, regs = ru_extractor.get_locations(text)
 
     location_items = []
+    locs = handle_decommunization(locs)
     for (country, ind) in locs:
         raw = locations_setup.LOCATIONS[country].loc[ind]
         item = {
@@ -33,5 +41,5 @@ def get_locations(text):
 
 
 if __name__ == '__main__':
-    text = 'У білоруському Гомелі помітили ешелон із САУ та танками: деталі'
+    text = 'взрывы в Артемовске'
     print(get_locations(text)[0])

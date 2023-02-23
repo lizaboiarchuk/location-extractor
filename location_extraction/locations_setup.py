@@ -1,4 +1,15 @@
 import pandas as pd
+import json
+
+
+with open('files/locations/ua-decom-dict.json', 'r') as f:
+    UA_DECOMMUNIZATION = json.load(f)
+
+DECOMMUNIZATION_DICT = {
+    "ua": UA_DECOMMUNIZATION,
+    "ru": {},
+    "by": {}
+}
 
 LOCATIONS = {
     "ua": pd.read_csv('files/locations/ua-locations-decom.csv'),
